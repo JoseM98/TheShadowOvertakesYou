@@ -1,7 +1,8 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://Assets/Character_spritesheet.png" type="Texture" id=1]
 [ext_resource path="res://Scripts/Character.gd" type="Script" id=2]
+[ext_resource path="res://Assets/light.png" type="Texture" id=3]
 
 [sub_resource type="RectangleShape2D" id=18]
 extents = Vector2( 9.36267, 11.4185 )
@@ -125,3 +126,9 @@ animation = "walk_down"
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
 zoom = Vector2( 0.5, 0.5 )
+
+[node name="Light2D" type="Light2D" parent="."]
+texture = ExtResource( 3 )
+texture_scale = 0.29
+energy = 0.77
+shadow_enabled = true
