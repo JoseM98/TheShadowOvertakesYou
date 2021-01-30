@@ -1,11 +1,21 @@
 extends KinematicBody2D
 
+signal dead
+
 export var speed = 10 # Character speed
+export var light_decrement = float(0.025)
+export var light_max_scale = 0.4
+var actual_light = 1 # Character light
 
 func _ready():
 	print("Character created")
+	$Light2D.texture_scale = light_max_scale
 
 func _process(delta):
+	process_movement(delta)
+	process_light(delta)
+
+func process_movement(delta)->void:
 	var velocity = Vector2()
 	
 	if Input.is_action_pressed("ui_down"):
@@ -29,4 +39,12 @@ func _process(delta):
 		$AnimatedSprite.frame = 0
 		
 	position += velocity * delta
-	
+
+func process_light(delta)->void:
+	actual_light -= light_decrement * delta
+	$Light2D.texture_scale = lerp(0,light_max_scale,actual_light)
+	if actual_light <= 0:
+		emit_signal("dead")
+
+func _on_Torch_torch_picked()->void:
+	actual_light = 1
