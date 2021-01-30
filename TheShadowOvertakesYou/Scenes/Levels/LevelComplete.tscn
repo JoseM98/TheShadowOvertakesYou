@@ -1,12 +1,14 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Scenes/Levels/Part1.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scripts/Maps/LevelComplete.gd" type="Script" id=2]
 [ext_resource path="res://Scenes/Main.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scenes/Levels/Part2.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scenes/Exit_Door.tscn" type="PackedScene" id=5]
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource( 2 )
 game = ExtResource( 3 )
 part1 = ExtResource( 1 )
 part2 = ExtResource( 4 )
+exit_door = ExtResource( 5 )
