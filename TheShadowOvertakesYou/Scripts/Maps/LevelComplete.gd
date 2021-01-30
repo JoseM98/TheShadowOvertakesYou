@@ -35,9 +35,9 @@ func _createMap() -> void:
 	var posArray
 	var stage
 	
-	for i in range(numFiles):
+	for _i in range(numFiles):
 		pos.x = startPoint.x
-		for n in range(numCols):
+		for _n in range(numCols):
 			posArray = rng.randi_range(0,arrayMaps.size()-1)
 			stage = arrayMaps[posArray].instance()
 			add_child(stage)
