@@ -119,6 +119,7 @@ script = ExtResource( 2 )
 Mark = ExtResource( 4 )
 speed = 5000
 light_decrement = 0.03
+light_max_scale = 0.4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 0.594604, 2.67572 )

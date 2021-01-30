@@ -5,7 +5,9 @@
 
 [sub_resource type="CapsuleShape2D" id=1]
 
-[node name="Torch" type="Area2D"]
+[node name="Torch" type="Area2D" groups=[
+"torch_group",
+]]
 position = Vector2( 646, 336 )
 collision_layer = 2
 script = ExtResource( 2 )

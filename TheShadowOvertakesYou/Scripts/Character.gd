@@ -58,7 +58,8 @@ func process_inputs(delta)->void:
 	if Input.is_action_just_pressed("ui_mark") && marks_left > 0:
 		var mark = Mark.instance()
 		mark.position = Vector2(position.x, position.y + 10)
-		get_tree().get_root().add_child(mark)
+		#get_tree().get_root().add_child(mark)
+		get_parent().add_child(mark)
 		marks_position.append(mark)
 		marks_left -= 1
 		emit_signal("mark_used",marks_left)
@@ -73,12 +74,18 @@ func process_light(delta)->void:
 	actual_light -= light_decrement * delta
 	$Light2D.texture_scale = lerp(0,light_max_scale,actual_light)
 	if actual_light <= 0:
-		emit_signal("dead")
+		if actual_fuel > 0:
+			actual_light = 1
+			actual_fuel = 0
+			emit_signal("fuel_used",actual_fuel)
+		else:
+			emit_signal("dead")
+
 
 func _on_Torch_torch_picked()->void:
 	actual_light = 1
 
 
-func _on_Fuel_fuel_picked(fuel_amount)->void:
+func _on_Fuel_fuel_picked(fuel_amount = 20)->void:
 	actual_fuel += fuel_amount
 	print(actual_fuel)

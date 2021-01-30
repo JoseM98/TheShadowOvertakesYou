@@ -6,7 +6,9 @@
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 13.1695, 10 )
 
-[node name="Fuel" type="Area2D"]
+[node name="Fuel" type="Area2D" groups=[
+"fuel_group",
+]]
 position = Vector2( 161.833, 52.5759 )
 collision_layer = 8
 script = ExtResource( 2 )
