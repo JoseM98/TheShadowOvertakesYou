@@ -1,0 +1,60 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Scenes/Menus/UITitle.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scenes/Menus/UIOpenLevel.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scenes/Menus/UIQuit.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scenes/Menus/UIContinue.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scenes/Menus/UIRetry.tscn" type="PackedScene" id=5]
+
+[node name="UserInterface" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PauseRectangle" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 0.235294 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PauseText" parent="." instance=ExtResource( 1 )]
+text = "PAUSE"
+
+[node name="Menu" type="VBoxContainer" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -203.0
+margin_top = -79.0
+margin_right = 203.0
+margin_bottom = 97.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Continue" parent="Menu" instance=ExtResource( 4 )]
+margin_right = 406.0
+margin_bottom = 41.0
+
+[node name="Retry" parent="Menu" instance=ExtResource( 5 )]
+margin_top = 45.0
+margin_right = 406.0
+margin_bottom = 86.0
+
+[node name="MainMenu" parent="Menu" instance=ExtResource( 2 )]
+margin_top = 90.0
+margin_right = 406.0
+margin_bottom = 131.0
+text = "Main Screen"
+next_scene_path = "res://Scenes/Menus/MainMenu.tscn"
+
+[node name="Quit" parent="Menu" instance=ExtResource( 3 )]
+margin_top = 135.0
+margin_right = 406.0
+margin_bottom = 176.0
+text = "Quit"
