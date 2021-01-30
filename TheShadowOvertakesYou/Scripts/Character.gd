@@ -15,6 +15,7 @@ var light_fuel_exchange = 0.01
 var actual_light = 1 # Character light
 var marks_left = 3
 var actual_fuel = 0
+var marks_position = []
 
 func _ready():
 	$Light2D.texture_scale = light_max_scale
@@ -47,7 +48,6 @@ func process_inputs(delta)->void:
 		$AnimatedSprite.stop()
 		$AnimatedSprite.frame = 0
 		
-	#position += velocity * delta
 	move_and_slide(velocity * delta)
 	
 	# Abilities
@@ -55,6 +55,7 @@ func process_inputs(delta)->void:
 		var mark = Mark.instance()
 		mark.position = Vector2(position.x, position.y + 10)
 		get_tree().get_root().add_child(mark)
+		marks_position.append(mark)
 		marks_left -= 1
 		emit_signal("mark_used",marks_left)
 	
