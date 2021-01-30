@@ -42,7 +42,8 @@ func process_inputs(delta)->void:
 		$AnimatedSprite.stop()
 		$AnimatedSprite.frame = 0
 		
-	position += velocity * delta
+	#position += velocity * delta
+	move_and_slide(velocity * delta)
 	
 	# Abilities
 	if Input.is_action_just_pressed("ui_mark") && marks_left > 0:
