@@ -21,8 +21,11 @@ func _ready():
 	$Light2D.texture_scale = light_max_scale
 
 func _process(delta):
-	process_inputs(delta)
 	process_light(delta)
+
+func _physics_process(delta: float) -> void:
+	process_inputs(delta)
+	
 
 func process_inputs(delta)->void:
 	# Movement
@@ -49,6 +52,7 @@ func process_inputs(delta)->void:
 		$AnimatedSprite.frame = 0
 		
 	move_and_slide(velocity * delta)
+	#position += velocity/50*delta
 	
 	# Abilities
 	if Input.is_action_just_pressed("ui_mark") && marks_left > 0:

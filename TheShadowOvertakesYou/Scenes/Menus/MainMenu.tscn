@@ -63,6 +63,7 @@ __meta__ = {
 }
 
 [node name="Play" parent="Menu" instance=ExtResource( 4 )]
+theme = null
 
 [node name="Quit" type="Button" parent="Menu"]
 margin_top = 61.0
