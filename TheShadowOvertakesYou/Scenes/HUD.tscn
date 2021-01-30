@@ -76,11 +76,11 @@ __meta__ = {
 }
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
-margin_left = 124.0
-margin_top = 79.0
-margin_right = 1932.0
-margin_bottom = 487.0
-rect_scale = Vector2( 0.160001, 0.12 )
+margin_left = 127.0
+margin_top = 74.0
+margin_right = 1935.0
+margin_bottom = 482.0
+rect_scale = Vector2( 0.121975, 0.0943765 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
