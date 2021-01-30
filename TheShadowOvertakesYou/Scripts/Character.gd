@@ -1,6 +1,7 @@
 extends KinematicBody2D
 
 signal dead
+signal mark_used(marks_left)
 
 export (PackedScene) var Mark
 
@@ -9,6 +10,7 @@ export var light_decrement = float(0.025)
 export var light_max_scale = 0.4
 var actual_light = 1 # Character light
 var marks_left = 3
+var actual_fuel = 0
 
 func _ready():
 	print("Character created")
@@ -51,6 +53,10 @@ func process_inputs(delta)->void:
 		mark.position = Vector2(position.x, position.y + 10)
 		get_tree().get_root().add_child(mark)
 		marks_left -= 1
+		emit_signal("mark_used",marks_left)
+		
+	if Input.is_action_just_pressed("ui_fuel") && actual_fuel > 0:
+		pass
 
 func process_light(delta)->void:
 	actual_light -= light_decrement * delta
@@ -60,3 +66,8 @@ func process_light(delta)->void:
 
 func _on_Torch_torch_picked()->void:
 	actual_light = 1
+
+
+func _on_Fuel_fuel_picked(fuel_amount)->void:
+	actual_fuel += fuel_amount
+	print(actual_fuel)
