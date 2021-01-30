@@ -10,7 +10,7 @@ func _on_Fuel_bar_value_changed(value):
 	else:
 		$"Fuel bar/Right end".visible = true
 
-func _on_Fuel_fuel_picked(value):
+func _on_Fuel_fuel_picked(value = 20):
 	$"Fuel bar".value += value
 
 func _on_Character_mark_used(marks_left):

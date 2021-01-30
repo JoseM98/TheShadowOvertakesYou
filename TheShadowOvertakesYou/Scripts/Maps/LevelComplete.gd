@@ -1,6 +1,6 @@
 extends Node2D
 
-export (PackedScene) var character
+export (PackedScene) var game
 export (PackedScene) var part1
 export (PackedScene) var part2
 # Declare member variables here. Examples:
@@ -16,9 +16,9 @@ export var fuelProbability = 50
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	var player = character.instance()
-	player.position = Vector2(100.0,100.0)
-	add_child(player)
+	var game_instance = game.instance()
+	game_instance.position = Vector2(100.0,100.0)
+	add_child(game_instance)
 	_createMap()
 	
 	pass # Replace with function body.
@@ -49,24 +49,26 @@ func _createMap() -> void:
 			stage.position = pos
 			stage.rotation_degrees = arrayRotations[posRotArray]
 			
+			var fuel = stage.get_child(1)
+			var torch = stage.get_child(2)
+			
 			# fuel
 			if rng.randi_range(0,100) > fuelProbability:
-				stage.get_child(1).queue_free()
+				fuel.queue_free()
 			else:
-				stage.get_child(1).rotation_degrees -= arrayRotations[posRotArray]
+				fuel.rotation_degrees -= arrayRotations[posRotArray]
 			
 			# torch
 			if rng.randi_range(0,100) > torchProbability:
-				stage.get_child(2).queue_free()
+				torch.queue_free()
 			else:
-				stage.get_child(2).rotation_degrees -= arrayRotations[posRotArray]
+				torch.rotation_degrees -= arrayRotations[posRotArray]
+			
+			
+			fuel.connect("fuel_picked", $Main.get_node("Character"), "_on_Fuel_fuel_picked")
+			fuel.connect("fuel_picked", $Main.get_node("HUD"), "_on_Fuel_fuel_picked")
+			torch.connect("torch_picked", $Main.get_node("Character"), "_on_Torch_torch_picked")
 			
 			pos.x += incrPos
 		pos.y += incrPos
 		
-
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta: float) -> void:
-#	pass
