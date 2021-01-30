@@ -6,7 +6,7 @@
 [node name="Main" type="Node2D"]
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
-color = Color( 0, 0, 0, 1 )
+color = Color( 0.0705882, 0.0705882, 0.0705882, 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
 position = Vector2( 638.428, 358.856 )
