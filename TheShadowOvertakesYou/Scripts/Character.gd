@@ -78,7 +78,7 @@ func process_light(delta)->void:
 			actual_fuel = 0
 			emit_signal("fuel_used",actual_fuel)
 		else:
-			get_tree().change_scene("res://Scenes/Menus/MainMenu.tscn")
+			get_tree().change_scene("res://Scenes/Menus/LoseGame.tscn")
 
 
 func _on_Torch_torch_picked()->void:

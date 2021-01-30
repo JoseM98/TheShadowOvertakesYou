@@ -11,6 +11,7 @@
 [ext_resource path="res://Scenes/Menus/PauseMenu.tscn" type="PackedScene" id=9]
 
 [node name="HUD" type="CanvasLayer"]
+pause_mode = 2
 layer = 7
 script = ExtResource( 7 )
 
@@ -103,7 +104,6 @@ margin_bottom = 408.0
 texture = ExtResource( 8 )
 
 [node name="UserInterface" parent="." instance=ExtResource( 9 )]
-pause_mode = 2
 visible = false
 [connection signal="value_changed" from="Fuel bar" to="." method="_on_Fuel_bar_value_changed"]
 
