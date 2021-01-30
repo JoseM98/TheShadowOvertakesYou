@@ -1,17 +1,23 @@
 extends KinematicBody2D
 
 signal dead
+signal mark_used(marks_left)
+signal fuel_used(fuel_left)
 
 export (PackedScene) var Mark
 
 export var speed = 10 # Character speed
 export var light_decrement = float(0.025)
 export var light_max_scale = 0.4
+export var fuel_decrement = 10
+
+var light_fuel_exchange = 0.01
 var actual_light = 1 # Character light
 var marks_left = 3
+var actual_fuel = 0
+var marks_position = []
 
 func _ready():
-	print("Character created")
 	$Light2D.texture_scale = light_max_scale
 
 func _process(delta):
@@ -42,7 +48,6 @@ func process_inputs(delta)->void:
 		$AnimatedSprite.stop()
 		$AnimatedSprite.frame = 0
 		
-	#position += velocity * delta
 	move_and_slide(velocity * delta)
 	
 	# Abilities
@@ -50,7 +55,15 @@ func process_inputs(delta)->void:
 		var mark = Mark.instance()
 		mark.position = Vector2(position.x, position.y + 10)
 		get_tree().get_root().add_child(mark)
+		marks_position.append(mark)
 		marks_left -= 1
+		emit_signal("mark_used",marks_left)
+	
+	# Fuel usage
+	if Input.is_action_pressed("ui_fuel") && actual_fuel > 0 && actual_light < 1:
+		actual_fuel -= fuel_decrement * delta
+		actual_light += light_fuel_exchange
+		emit_signal("fuel_used",actual_fuel)
 
 func process_light(delta)->void:
 	actual_light -= light_decrement * delta
@@ -60,3 +73,8 @@ func process_light(delta)->void:
 
 func _on_Torch_torch_picked()->void:
 	actual_light = 1
+
+
+func _on_Fuel_fuel_picked(fuel_amount)->void:
+	actual_fuel += fuel_amount
+	print(actual_fuel)
