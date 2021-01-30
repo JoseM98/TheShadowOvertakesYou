@@ -1,6 +1,5 @@
 extends KinematicBody2D
 
-signal dead
 signal mark_used(marks_left)
 signal fuel_used(fuel_left)
 
@@ -79,7 +78,7 @@ func process_light(delta)->void:
 			actual_fuel = 0
 			emit_signal("fuel_used",actual_fuel)
 		else:
-			emit_signal("dead")
+			get_tree().change_scene("res://Scenes/Menus/MainMenu.tscn")
 
 
 func _on_Torch_torch_picked()->void:
