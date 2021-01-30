@@ -1,23 +1,25 @@
 [gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Assets/Menus/Font/kenvector_future_thin.ttf" type="DynamicFontData" id=1]
-[ext_resource path="res://Scripts/Menus/UIMainMenu.gd" type="Script" id=2]
+[ext_resource path="res://Scripts/Menus/UIQuitMainMenu.gd" type="Script" id=2]
 [ext_resource path="res://Assets/Menus/Font/UITheme.tres" type="Theme" id=3]
 
 [sub_resource type="DynamicFont" id=1]
-size = 20
+size = 30
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 1 )
 
-[node name="Play" type="Button"]
+[node name="Quit" type="Button"]
 margin_right = 354.0
-margin_bottom = 57.0
+margin_bottom = 58.0
 rect_pivot_offset = Vector2( -424.601, -35.4504 )
 size_flags_vertical = 3
 theme = ExtResource( 3 )
 custom_fonts/font = SubResource( 1 )
-text = "Play"
+text = "Exit"
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-[connection signal="button_up" from="." to="." method="_on_button_up"]
+[connection signal="button_up" from="." to="." method="_on_Quit_button_up"]

@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Scripts/Menus/UIContinue.gd" type="Script" id=1]
+[ext_resource path="res://Assets/Menus/Font/UITheme.tres" type="Theme" id=2]
+
+[node name="Continue" type="Button"]
+margin_right = 354.0
+margin_bottom = 57.0
+rect_pivot_offset = Vector2( -424.601, -35.4504 )
+size_flags_vertical = 3
+theme = ExtResource( 2 )
+text = "Continue"
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="button_up" from="." to="." method="_on_Continue_button_up"]
