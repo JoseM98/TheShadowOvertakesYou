@@ -27,6 +27,7 @@ position = Vector2( 595.944, 327.324 )
 
 [node name="Fuel" parent="." instance=ExtResource( 5 )]
 position = Vector2( 493.247, 269.955 )
+[connection signal="fuel_used" from="Character" to="HUD" method="_on_Character_fuel_used"]
 [connection signal="mark_used" from="Character" to="HUD" method="_on_Character_mark_used"]
 [connection signal="torch_picked" from="Torch" to="Character" method="_on_Torch_torch_picked"]
 [connection signal="fuel_picked" from="Fuel" to="HUD" method="_on_Fuel_fuel_picked"]

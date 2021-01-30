@@ -1,7 +1,6 @@
 extends CanvasLayer
 
 func _on_Fuel_bar_value_changed(value):
-	print(value)
 	if value < 99:
 		$"Fuel bar/Right end".visible = false
 	else:
@@ -12,3 +11,7 @@ func _on_Fuel_fuel_picked(value):
 
 func _on_Character_mark_used(marks_left):
 	$HBoxContainer.get_child(marks_left).queue_free()
+
+
+func _on_Character_fuel_used(fuel_left):
+	$"Fuel bar".value = fuel_left
