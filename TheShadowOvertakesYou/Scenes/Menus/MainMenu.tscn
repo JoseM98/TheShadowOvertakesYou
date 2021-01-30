@@ -12,7 +12,7 @@ outline_size = 3
 outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 2 )
 
-[sub_resource type="DynamicFont" id=5]
+[sub_resource type="DynamicFont" id=2]
 size = 30
 outline_size = 1
 outline_color = Color( 0, 0, 0, 1 )
@@ -71,7 +71,7 @@ margin_bottom = 119.0
 rect_pivot_offset = Vector2( -424.601, -35.4504 )
 size_flags_vertical = 3
 theme = ExtResource( 3 )
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 2 )
 text = "Exit"
 script = ExtResource( 5 )
 __meta__ = {
