@@ -74,6 +74,10 @@ func _createMap() -> void:
 	
 	var door = exit_door.instance()
 	door.position = Vector2(rng.randf_range(x_limit.x,x_limit.y),rng.randf_range(y_limit.x,y_limit.y))
+	var character_pos = $Main.get_node("Character").position
+	while door.position.distance_to(character_pos) <= 500:
+		door.position = Vector2(rng.randf_range(x_limit.x,x_limit.y),rng.randf_range(y_limit.x,y_limit.y))
+		
 	add_child(door)
 	
 	
