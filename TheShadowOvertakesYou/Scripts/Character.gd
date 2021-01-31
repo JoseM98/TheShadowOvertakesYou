@@ -16,6 +16,7 @@ var marks_left = 3
 var actual_fuel = 0
 var marks_position = []
 var distante_mark_lighting = 150
+var min_light_to_use_fuel = 0.2
 
 func _ready():
 	$Light2D.texture_scale = light_max_scale
@@ -77,13 +78,14 @@ func process_light(delta)->void:
 	
 	actual_light -= light_decrement * delta
 	$Light2D.texture_scale = lerp(0,light_max_scale,actual_light)
-	if actual_light <= 0:
+	if actual_light <= min_light_to_use_fuel:
 		if actual_fuel > 0:
-			actual_light = 1
-			actual_fuel = 0
+			actual_light += light_fuel_exchange 
+			actual_fuel -= fuel_decrement
 			emit_signal("fuel_used",actual_fuel)
 		else:
-			get_tree().change_scene("res://Scenes/Menus/LoseGame.tscn")
+			if actual_light <= 0:
+				get_tree().change_scene("res://Scenes/Menus/LoseGame.tscn")
 
 
 func _on_Torch_torch_picked()->void:
