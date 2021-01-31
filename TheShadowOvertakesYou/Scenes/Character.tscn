@@ -125,10 +125,13 @@ position = Vector2( 0.594604, 2.67572 )
 shape = SubResource( 1 )
 
 [node name="Light2D" type="Light2D" parent="."]
+position = Vector2( 0, -2.51978 )
 texture = ExtResource( 3 )
 texture_scale = 0.4
 color = Color( 0.909804, 0.937255, 0.431373, 1 )
 shadow_enabled = true
+shadow_color = Color( 0.215686, 0.203922, 0.203922, 0.0823529 )
+shadow_filter = 5
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 18 )
