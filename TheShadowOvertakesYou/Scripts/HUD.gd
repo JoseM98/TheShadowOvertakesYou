@@ -4,6 +4,10 @@ onready var scene_tree: = get_tree()
 onready var pause_overlay: = get_node("UserInterface")
 var paused: = false setget set_paused
 
+func _ready() -> void:
+	var data = get_node("/root/PersistenData")
+	$Label.text = "Stage: " + str(data.Stage)
+
 func _on_Fuel_bar_value_changed(value):
 	if value < 99:
 		$"Fuel bar/Right end".visible = false

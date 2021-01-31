@@ -9,7 +9,7 @@ export (PackedScene) var exit_door
 
 export var startPoint = Vector2(0.0,0.0)
 export var numCols = 4
-export var numFiles = 4
+export var numRows = 4
 export var torchProbability = 50
 export var fuelProbability = 50
 
@@ -40,8 +40,11 @@ func _createMap() -> void:
 	var posArray
 	var posRotArray
 	var stage: Node2D
+	var doorTileRow = rng.randi_range(0,numCols-1)
+	var doorTileCol = rng.randi_range(0,numRows-1)
+	var doorPosition = Vector2(doorTileRow, doorTileCol)
 	
-	for _i in range(numFiles):
+	for _i in range(numRows):
 		pos.x = startPoint.x
 		for _n in range(numCols):
 			posArray = rng.randi_range(0,arrayMaps.size()-1)
@@ -53,6 +56,8 @@ func _createMap() -> void:
 			
 			var fuel = stage.get_child(1)
 			var torch = stage.get_child(2)
+			if _i!=doorTileRow || _n!= doorTileCol:
+				stage.get_child(4).queue_free()
 			
 			# fuel
 			if rng.randi_range(0,100) > fuelProbability:
@@ -76,16 +81,23 @@ func _createMap() -> void:
 	
 	# character position
 	var col_i = rng.randi_range(1,numCols-1)
-	var row_i = rng.randi_range(1,numFiles-1)
-	$Main.get_node("Character").position = Vector2((256*row_i) ,(256*col_i))
+	var row_i = rng.randi_range(1,numRows-1)
+	var valueError = 0;
+	
+	while doorPosition.distance_to(Vector2(row_i, col_i)) <= 1.6 && valueError<30:
+		col_i = rng.randi_range(1,numCols-1)
+		row_i = rng.randi_range(1,numRows-1)
+		valueError+=1;
+		print(valueError)
+	$Main.get_node("Character").position = Vector2((256*row_i) ,(256*col_i+8))
 	
 	
-	var door = exit_door.instance()
-	door.position = Vector2(rng.randf_range(x_limit.x,x_limit.y),rng.randf_range(y_limit.x,y_limit.y))
-	var character_pos = $Main.get_node("Character").position
-	while door.position.distance_to(character_pos) <= 500:
-		door.position = Vector2(rng.randf_range(x_limit.x,x_limit.y),rng.randf_range(y_limit.x,y_limit.y))
+	#var door = exit_door.instance()
+	#door.position = Vector2(rng.randf_range(x_limit.x,x_limit.y),rng.randf_range(y_limit.x,y_limit.y))
+	#var character_pos = $Main.get_node("Character").position
+	#while door.position.distance_to(character_pos) <= 500:
+	#	door.position = Vector2(rng.randf_range(x_limit.x,x_limit.y),rng.randf_range(y_limit.x,y_limit.y))
 		
-	add_child(door)
+	#add_child(door)
 	
 	

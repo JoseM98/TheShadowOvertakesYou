@@ -8,6 +8,8 @@ extends Control
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	var data = get_node("/root/PersistenData")
+	data.Stage = 1
 	pass # Replace with function body.
 
 

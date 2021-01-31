@@ -27,8 +27,17 @@ __meta__ = {
 }
 
 [node name="Label" parent="." instance=ExtResource( 3 )]
+margin_top = 34.7963
+margin_bottom = 151.796
 text = "CONGRATULATIONS!!!
 YOU WIN!!!"
+
+[node name="Label2" parent="." instance=ExtResource( 3 )]
+margin_left = -390.112
+margin_top = 168.369
+margin_right = 378.888
+margin_bottom = 225.37
+text = "Stage: 0"
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 anchor_left = 0.5
