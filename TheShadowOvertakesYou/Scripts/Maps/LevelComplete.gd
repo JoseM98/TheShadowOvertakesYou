@@ -3,16 +3,16 @@ extends Node2D
 export (PackedScene) var game
 export (PackedScene) var part1
 export (PackedScene) var part2
-# Declare member variables here. Examples:
-# var a: int = 2
-# var b: String = "text"
+export (PackedScene) var exit_door
+
 export var startPoint = Vector2(0.0,0.0)
 export var numCols = 4
 export var numFiles = 4
 export var torchProbability = 50
 export var fuelProbability = 50
 
-
+var y_limit = Vector2(10,760)
+var x_limit = Vector2(10,880)
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -71,4 +71,9 @@ func _createMap() -> void:
 			
 			pos.x += incrPos
 		pos.y += incrPos
-		
+	
+	var door = exit_door.instance()
+	door.position = Vector2(rng.randf_range(x_limit.x,x_limit.y),rng.randf_range(y_limit.x,y_limit.y))
+	add_child(door)
+	
+	

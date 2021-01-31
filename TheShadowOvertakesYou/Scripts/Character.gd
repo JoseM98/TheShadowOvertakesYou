@@ -15,6 +15,7 @@ var actual_light = 1 # Character light
 var marks_left = 3
 var actual_fuel = 0
 var marks_position = []
+var distante_mark_lighting = 150
 
 func _ready():
 	$Light2D.texture_scale = light_max_scale
@@ -57,9 +58,8 @@ func process_inputs(delta)->void:
 	if Input.is_action_just_pressed("ui_mark") && marks_left > 0:
 		var mark = Mark.instance()
 		mark.position = Vector2(position.x, position.y + 10)
-		#get_tree().get_root().add_child(mark)
 		get_parent().add_child(mark)
-		marks_position.append(mark)
+		marks_position.append(mark.position)
 		marks_left -= 1
 		emit_signal("mark_used",marks_left)
 	
@@ -70,6 +70,11 @@ func process_inputs(delta)->void:
 		emit_signal("fuel_used",actual_fuel)
 
 func process_light(delta)->void:
+	
+	for mark in marks_position:
+		if mark.distance_to(self.position) < distante_mark_lighting:
+			return
+	
 	actual_light -= light_decrement * delta
 	$Light2D.texture_scale = lerp(0,light_max_scale,actual_light)
 	if actual_light <= 0:
