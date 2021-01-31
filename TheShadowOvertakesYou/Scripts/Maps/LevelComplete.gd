@@ -3,6 +3,8 @@ extends Node2D
 export (PackedScene) var game
 export (PackedScene) var part1
 export (PackedScene) var part2
+export (PackedScene) var part3
+export (PackedScene) var part4
 export (PackedScene) var exit_door
 
 export var startPoint = Vector2(0.0,0.0)
@@ -27,7 +29,7 @@ func _ready() -> void:
 func _createMap() -> void:
 	var rng = RandomNumberGenerator.new()
 	rng.randomize()
-	var arrayMaps = [part1, part2]
+	var arrayMaps = [part1, part2, part3, part4]
 	var arrayRotations = [0, 90, 180, 270]
 	#var stage2 = part2.instance()
 	
