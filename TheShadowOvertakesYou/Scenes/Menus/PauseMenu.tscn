@@ -45,6 +45,7 @@ margin_bottom = 41.0
 margin_top = 45.0
 margin_right = 406.0
 margin_bottom = 86.0
+text = "Restart"
 
 [node name="MainMenu" parent="Menu" instance=ExtResource( 2 )]
 margin_top = 90.0

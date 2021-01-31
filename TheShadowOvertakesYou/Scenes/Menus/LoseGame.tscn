@@ -1,0 +1,57 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Scenes/Menus/UIOpenLevel.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scenes/Menus/UITitle.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scenes/Menus/UIQuit.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Assets/Menus/fantasy-1920-x-1080_full.png" type="Texture" id=5]
+
+[node name="LoseMenu" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="fantasy-1920-x-1080_full" type="TextureRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 5 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" parent="." instance=ExtResource( 3 )]
+text = "Game Over!!!"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -269.5
+margin_top = -98.0
+margin_right = 269.5
+margin_bottom = 98.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Retry" parent="VBoxContainer" instance=ExtResource( 1 )]
+margin_right = 539.0
+margin_bottom = 62.0
+text = "Try Again"
+next_scene_path = "res://Scenes/Levels/LevelComplete.tscn"
+
+[node name="MainMenu" parent="VBoxContainer" instance=ExtResource( 1 )]
+margin_top = 66.0
+margin_right = 539.0
+margin_bottom = 129.0
+text = "Main Screen"
+next_scene_path = "res://Scenes/Menus/MainMenu.tscn"
+
+[node name="Quit" parent="VBoxContainer" instance=ExtResource( 4 )]
+margin_top = 133.0
+margin_right = 539.0
+margin_bottom = 196.0
+text = "Quit"

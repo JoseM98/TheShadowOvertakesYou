@@ -131,7 +131,7 @@ shadow_enabled = true
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 18 )
-animation = "walk_down"
+animation = "walk_right"
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
