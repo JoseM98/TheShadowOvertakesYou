@@ -1,9 +1,21 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=7 format=2]
 
-[ext_resource path="res://Assets/appear-frame02.png" type="Texture" id=1]
+[ext_resource path="res://Assets/torch-f2.png" type="Texture" id=1]
 [ext_resource path="res://Scripts/Torch.gd" type="Script" id=2]
+[ext_resource path="res://Assets/torch-f1.png" type="Texture" id=3]
+[ext_resource path="res://Assets/light2D.png" type="Texture" id=4]
 
 [sub_resource type="CapsuleShape2D" id=1]
+radius = 6.88806
+height = 10.5057
+
+[sub_resource type="SpriteFrames" id=2]
+animations = [ {
+"frames": [ ExtResource( 3 ), ExtResource( 1 ) ],
+"loop": true,
+"name": "idle",
+"speed": 0.5
+} ]
 
 [node name="Torch" type="Area2D" groups=[
 "torch_group",
@@ -12,9 +24,19 @@ position = Vector2( 646, 336 )
 collision_layer = 2
 script = ExtResource( 2 )
 
-[node name="Sprite" type="Sprite" parent="."]
-texture = ExtResource( 1 )
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+position = Vector2( -0.420883, -0.841858 )
+scale = Vector2( 1.29816, 1.31569 )
+frames = SubResource( 2 )
+animation = "idle"
+playing = true
+
+[node name="Light2D" type="Light2D" parent="."]
+texture = ExtResource( 4 )
+texture_scale = 0.1
+color = Color( 0.909804, 0.937255, 0.431373, 1 )
+shadow_enabled = true
 [connection signal="body_entered" from="." to="." method="_on_Torch_body_entered"]
