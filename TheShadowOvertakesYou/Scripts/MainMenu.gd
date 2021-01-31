@@ -25,4 +25,4 @@ func _on_Quit_button_up():
 
 
 func _on_Controls_button_up():
-	pass # Replace with function body.
+	get_tree().change_scene("res://Scenes/Menus/ControlsMenu.tscn")

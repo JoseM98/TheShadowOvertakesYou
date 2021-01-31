@@ -13,8 +13,8 @@ export var numFiles = 4
 export var torchProbability = 50
 export var fuelProbability = 50
 
-var y_limit = Vector2(10,760)
-var x_limit = Vector2(10,880)
+var y_limit = Vector2(-130,900)
+var x_limit = Vector2(-130,900)
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -75,9 +75,9 @@ func _createMap() -> void:
 		pos.y += incrPos
 	
 	# character position
-	var col_i = rng.randi_range(1,numCols)
-	var row_i = rng.randi_range(1,numFiles)
-	$Main.get_node("Character").position = Vector2((256*row_i)-128 ,(256*col_i)-128)
+	var col_i = rng.randi_range(1,numCols-1)
+	var row_i = rng.randi_range(1,numFiles-1)
+	$Main.get_node("Character").position = Vector2((256*row_i) ,(256*col_i))
 	
 	
 	var door = exit_door.instance()
