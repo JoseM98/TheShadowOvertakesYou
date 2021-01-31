@@ -19,4 +19,6 @@ texture = ExtResource( 1 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 1.05948, 2.51623 )
 shape = SubResource( 1 )
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 [connection signal="body_entered" from="." to="." method="_on_Fuel_body_entered"]
