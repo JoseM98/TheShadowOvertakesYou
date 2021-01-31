@@ -114,7 +114,7 @@ animations = [ {
 [node name="Character" type="KinematicBody2D"]
 position = Vector2( 489.317, 326.604 )
 z_index = 10
-collision_mask = 6
+collision_mask = 30
 script = ExtResource( 2 )
 Mark = ExtResource( 4 )
 speed = 5000
