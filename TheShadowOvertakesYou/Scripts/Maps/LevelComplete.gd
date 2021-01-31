@@ -72,6 +72,12 @@ func _createMap() -> void:
 			pos.x += incrPos
 		pos.y += incrPos
 	
+	# character position
+	var col_i = rng.randi_range(1,numCols)
+	var row_i = rng.randi_range(1,numFiles)
+	$Main.get_node("Character").position = Vector2((256*row_i)-128 ,(256*col_i)-128)
+	
+	
 	var door = exit_door.instance()
 	door.position = Vector2(rng.randf_range(x_limit.x,x_limit.y),rng.randf_range(y_limit.x,y_limit.y))
 	var character_pos = $Main.get_node("Character").position
