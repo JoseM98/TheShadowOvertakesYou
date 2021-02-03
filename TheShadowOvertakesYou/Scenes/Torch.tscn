@@ -32,6 +32,7 @@ position = Vector2( -0.420883, -0.841858 )
 scale = Vector2( 1.29816, 1.31569 )
 frames = SubResource( 2 )
 animation = "idle"
+frame = 1
 playing = true
 
 [node name="Light2D" type="Light2D" parent="."]

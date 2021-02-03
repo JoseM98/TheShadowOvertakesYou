@@ -18,6 +18,8 @@ part2 = ExtResource( 4 )
 part3 = ExtResource( 7 )
 part4 = ExtResource( 8 )
 exit_door = ExtResource( 5 )
+torchProbability = 30
+fuelProbability = 30
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 6 )
